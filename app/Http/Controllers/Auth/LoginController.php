@@ -56,7 +56,7 @@ class LoginController extends Controller
 
         $profile_picture = $user && isset($user->account->picture) ? $user->account->picture : "";
 
-        if(!$user->isAn('admin') && $user && isset($user->account->picture)):
+        if($user && !$user->isAn('admin') && $user && isset($user->account->picture)):
     
             $profile_picture = $user->account->picture;
             $security_question = $user->account->security_questions()->get()->random();
