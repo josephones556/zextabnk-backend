@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div class="card">
-                                    <div class="card-header" style="background: #f58733;">
+                                    <div class="card-header pb-0" style="background: #f58733;"> 
                                         <h5>Login to {{ config('app.name') }} Online Banking</h5>
                                     </div>
                                     <div class="card-body">
@@ -50,11 +50,22 @@
                                                 <form action="{{ route('login') }}" method="post">
                                                     @csrf
 
+                                                    @if ($errors->any())
+                                                        <div class="alert alert-danger alert-dismissible fade show">
+                                                                @foreach ($errors->all() as $error)
+                                                                    {{ $error }}
+                                                                @endforeach
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    @endif
+
                                                     @if(session('login-disabled'))
                                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                                             {{ session('login-disabled') }}
                                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
+                                                                <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                     @endif
@@ -63,7 +74,7 @@
                                                         @if($profile_picture)
                                                             <img src="{{ $profile_picture }}" height="70" width="70" style="border-radius: 50%"/>
                                                         @else
-                                                            <img src="/img/{{ config('app.name') }}/logo.png" height="50"/>
+                                                            <img src="/img/login_flower.jpg" height="70" width="70" style="border-radius: 50%"/>
                                                         @endif
                                                     </div>
                                 
@@ -71,11 +82,6 @@
                                                         <label for="staticEmail" class="col-sm-6 col-form-label text-right">Online Banking ID:</label>
                                                         <div class="col-sm-6">
                                                             <input type="text" class="form-control" id="onlineBankingId" name="username" value="{{ $bankingId ? $bankingId : old('username') }}" placeholder="Online Banking ID">
-                                                            @error('username')
-                                                                <span class="text-danger">
-                                                                    {{ str_replace("username", "online banking id", $message) }}
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
 
@@ -83,20 +89,17 @@
                                                         <label for="inputPassword" class="col-sm-6 col-form-label text-right">Password: </label>
                                                         <div class="col-sm-6">
                                                             <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
-                                                            @error('password')
-                                                                <div class="text-danger">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
                                                         </div>
-                                                    </div>
+                                                    </div>  
 
-                                                    <div class="form-group row">
-                                                        <label for="inputPassword" class="col-sm-6 col-form-label text-right">What is the name of your first car?</label>
-                                                        <div class="col-sm-6">
-                                                            <input type="text " name="security_question_answer" class="form-control" id="inputPassword" placeholder="Answer">
+                                                    @if($question != "")
+                                                        <div class="form-group row">
+                                                            <label for="inputPassword" class="col-sm-6 col-form-label text-right">{{ $question }}</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text " name="security_question_answer" class="form-control" id="inputPassword" placeholder="Answer">
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
 
                                                     <div class="float-right">
                                                         <button class="btn btn-primary" type="submit" style="background: #f58733;">Submit form</button>

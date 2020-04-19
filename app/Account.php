@@ -41,6 +41,13 @@ class Account extends Model
     } 
 
 
+    public function security_questions()
+    {
+        # code...
+        return $this->hasMany(SecurityQuestion::class);
+    } 
+
+
     public function transactions()
     {
         # code...

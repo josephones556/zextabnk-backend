@@ -85,7 +85,7 @@
 										<span class="user-name text-truncate">{{ auth()->user()->isAn('active') ? auth()->user()->account->firstname . ' ' . auth()->user()->account->lastname : auth()->user()->username }}</span>
 										@if($user->isAn('active'))
 										<img class="avatar" style="" src="/storage/{{  auth()->user()->account->picture }}" alt="User Thumb">
-										@endif
+										@endif 
 										<i class="icon-chevron-small-down"></i>
 									</a>
 									<div class="dropdown-menu lg dropdown-menu-right" aria-labelledby="userSettings">
@@ -139,7 +139,7 @@
 						<!-- BEGIN .user-profile -->
 						<div class="user-profile">
 							@if($user->isAn('active'))
-							<img src="{{  auth()->user()->account->picture }}" class="profile-thumb" alt="User Thumb">
+							<img src="/storage/{{  auth()->user()->account->picture }}" class="profile-thumb" alt="User Thumb">
 							@endif
 							<h6 class="profile-name">{{ auth()->user()->isAn('active') ? auth()->user()->account->firstname . ' ' . auth()->user()->account->lastname : auth()->user()->username }}</h6>
 							<ul class="profile-actions">

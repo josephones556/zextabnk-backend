@@ -143,6 +143,92 @@
 													<input type="number" class="form-control" placeholder="Account Balance" id="account_balance" name="account_balance" required value="{{ old('account_balance') ? old('account_balance') : 165706.45 }}">
 												</div>
 											</div>
+											<div class="form-row">
+												<div class="col-md-4">
+													<div class="form-group">
+														<label for="opening" class="col-form-label">Question 1.</label>
+														<select class="form-control" name="question_1">
+															<option value=""> -- Select Question -- </option>
+															<option value="What was your childhood nickname?"> What was your childhood nickname? </option>
+															<option value="What is the name of your favorite childhood friend?"> What is the name of your favorite childhood friend? </option>
+															<option value="In what city or town did your mother and father meet?"> In what city or town did your mother and father meet? </option>
+															<option value="What is the middle name of your oldest child?"> What is the middle name of your oldest child? </option>
+															<option value="What is your favorite team?"> What is your favorite team? </option>
+															<option value="What is your favorite movie?"> What is your favorite movie? </option>
+															<option value="What was your favorite sport in high school?"> What was your favorite sport in high school? </option>
+															<option value="What was your favorite food as a child?"> What was your favorite food as a child? </option>
+															<option value="What is the first name of the boy or girl that you first kissed?"> What is the first name of the boy or girl that you first kissed? </option>
+															<option value="What was the make and model of your first car?"> What was the make and model of your first car? </option>
+															<option value="What was the name of the hospital where you were born?"> What was the name of the hospital where you were born? </option>
+															<option value="Who is your childhood sports hero?"> Who is your childhood sports hero? </option>
+															<option value="What school did you attend for sixth grade?"> What school did you attend for sixth grade? </option>
+															<option value="What was the last name of your third grade teacher?"> What was the last name of your third grade teacher? </option>
+															<option value="In what town was your first job?"> In what town was your first job? </option>
+															<option value="What was the name of the company where you had your first job?"> What was the name of the company where you had your first job? </option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="opening" class="col-form-label">Answer 1.</label>
+														<input type="text" class="form-control" name="answer_1" id="answer_1" required value="{{ old('answer_1') }}" placeholder="Answer 1">
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="form-group">
+														<label for="opening" class="col-form-label">Question 2.</label>
+														<select class="form-control" name="question_2">
+															<option value=""> -- Select Question -- </option>
+															<option value="What was your childhood nickname?"> What was your childhood nickname? </option>
+															<option value="What is the name of your favorite childhood friend?"> What is the name of your favorite childhood friend? </option>
+															<option value="In what city or town did your mother and father meet?"> In what city or town did your mother and father meet? </option>
+															<option value="What is the middle name of your oldest child?"> What is the middle name of your oldest child? </option>
+															<option value="What is your favorite team?"> What is your favorite team? </option>
+															<option value="What is your favorite movie?"> What is your favorite movie? </option>
+															<option value="What was your favorite sport in high school?"> What was your favorite sport in high school? </option>
+															<option value="What was your favorite food as a child?"> What was your favorite food as a child? </option>
+															<option value="What is the first name of the boy or girl that you first kissed?"> What is the first name of the boy or girl that you first kissed? </option>
+															<option value="What was the make and model of your first car?"> What was the make and model of your first car? </option>
+															<option value="What was the name of the hospital where you were born?"> What was the name of the hospital where you were born? </option>
+															<option value="Who is your childhood sports hero?"> Who is your childhood sports hero? </option>
+															<option value="What school did you attend for sixth grade?"> What school did you attend for sixth grade? </option>
+															<option value="What was the last name of your third grade teacher?"> What was the last name of your third grade teacher? </option>
+															<option value="In what town was your first job?"> In what town was your first job? </option>
+															<option value="What was the name of the company where you had your first job?"> What was the name of the company where you had your first job? </option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="opening" class="col-form-label">Answer 2.</label>
+														<input type="text" class="form-control" name="answer_2" id="answer_2" required value="{{ old('answer_2') }}" placeholder="Answer 2">
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="form-group">
+														<label for="opening" class="col-form-label">Question 3.</label>
+														<select class="form-control" name="question_3">
+															<option value=""> -- Select Question -- </option>
+															<option value="What was your childhood nickname?"> What was your childhood nickname? </option>
+															<option value="What is the name of your favorite childhood friend?"> What is the name of your favorite childhood friend? </option>
+															<option value="In what city or town did your mother and father meet?"> In what city or town did your mother and father meet? </option>
+															<option value="What is the middle name of your oldest child?"> What is the middle name of your oldest child? </option>
+															<option value="What is your favorite team?"> What is your favorite team? </option>
+															<option value="What is your favorite movie?"> What is your favorite movie? </option>
+															<option value="What was your favorite sport in high school?"> What was your favorite sport in high school? </option>
+															<option value="What was your favorite food as a child?"> What was your favorite food as a child? </option>
+															<option value="What is the first name of the boy or girl that you first kissed?"> What is the first name of the boy or girl that you first kissed? </option>
+															<option value="What was the make and model of your first car?"> What was the make and model of your first car? </option>
+															<option value="What was the name of the hospital where you were born?"> What was the name of the hospital where you were born? </option>
+															<option value="Who is your childhood sports hero?"> Who is your childhood sports hero? </option>
+															<option value="What school did you attend for sixth grade?"> What school did you attend for sixth grade? </option>
+															<option value="What was the last name of your third grade teacher?"> What was the last name of your third grade teacher? </option>
+															<option value="In what town was your first job?"> In what town was your first job? </option>
+															<option value="What was the name of the company where you had your first job?"> What was the name of the company where you had your first job? </option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="opening" class="col-form-label">Answer 3.</label>
+														<input type="text" class="form-control" name="answer_3" id="answer_3" required value="{{ old('answer_3') }}" placeholder="Answer 3">
+													</div>
+												</div>
+											</div>
 											<div class="row">
 												<div class="form-group col-md-6">
 													<label for="picture" class="col-form-label">Passport Image</label>

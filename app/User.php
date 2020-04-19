@@ -30,7 +30,6 @@ class User extends Authenticatable
 
     public function account()
     {
-        # code...
         return $this->hasOne(Account::class);
     }
 }

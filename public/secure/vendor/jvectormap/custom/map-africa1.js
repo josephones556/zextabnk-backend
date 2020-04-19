@@ -10,7 +10,7 @@ $(function(){
 		series: {
 			regions: [{
 				values: gdpData,
-				scale: ['#2bb4e8', '#61c9f1'],
+				scale: ['#f58733', '#61c9f1'],
 				normalizeFunction: 'polynomial'
 			}]
 		},

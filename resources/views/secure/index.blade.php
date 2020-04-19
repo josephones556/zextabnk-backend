@@ -95,7 +95,7 @@
 														</h6>
 													</div>
 													<div class="avg-block">
-														<h4 class="avg-total text-primary">$ {{ number_format($data['credits']->avg('amount'), 2) }}</h4>
+														<h4 class="avg-total text-success">$ {{ number_format($data['credits']->avg('amount'), 2) }}</h4>
 														<h6 class="avg-label">
 															Credit
 														</h6>

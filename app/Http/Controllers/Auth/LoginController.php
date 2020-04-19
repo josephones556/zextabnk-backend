@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -54,15 +56,61 @@ class LoginController extends Controller
 
         $profile_picture = $user && isset($user->account->picture) ? $user->account->picture : "";
 
+        if($user && isset($user->account->picture)):
+    
+            $profile_picture = $user->account->picture;
+            $security_question = $user->account->security_questions()->get()->random();
+            cache()->put('security_question_' . $user->id, $security_question, 600);
+            $question = $security_question->question;
+
+        else:
+
+            $profile_picture = "";
+            $question = "";
+
+        endif;
+
         return view('auth.login', [
+            'question' => $question,
             'bankingId' => $request->bankingId,
             'profile_picture' => $profile_picture
         ]);
     }
 
+        /**
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        if ($response = $this->authenticated($request, $this->guard()->user())) {
+            return $response;
+        }
+
+        if(array_key_exists("security_question_answer", (array) $request->all()))
+        {
+            $security_question = cache('security_question_' . $request->user()->id);
+
+            if($security_question->answer != $request->security_question_answer)
+            {
+                Auth::logout();
+                return back()->withErrors('Security question answer is incorrect.');
+            }
+        }
+
+        return $request->wantsJson()
+                    ? new Response('', 204)
+                    : redirect()->intended($this->redirectPath());
+    }
+
     public function redirectTo()
     {
-        # code...
         $user = auth()->user();
 
         if ($user->isAn('inactive')) {
@@ -82,10 +130,4 @@ class LoginController extends Controller
 
         return $route;
     }
-
-
-/*    public function showLoginForm()
-    {
-        return redirect(route('welcome'));
-    }*/
 }

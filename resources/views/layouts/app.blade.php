@@ -42,7 +42,14 @@
             <script src="vendor/html5shiv.js"></script>
             <script src="vendor/respond.js"></script>
         <![endif]-->
-
+        @stack('style')
+        <style>
+            .btn-color { 
+                background-color: #f58733;
+                border-color: #f58733;
+                color: #ffffff;
+            }
+        </style>
             
     </head>
 
