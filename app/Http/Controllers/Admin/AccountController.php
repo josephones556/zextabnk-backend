@@ -8,6 +8,7 @@ use App\User;
 use Cache;
 use Hash;
 use Mail;
+use App\Transaction;
 use App\Mail\TransactionAlert;
 
 class AccountController extends Controller
@@ -167,6 +168,31 @@ class AccountController extends Controller
         return view('admin.account', compact('user'));
     }
 
+    public function account_alter_transaction(Request $request, $id)
+    {
+        $transaction = Transaction::find($id);
+        return view('admin.alter_transaction', [
+            'transaction' => $transaction
+        ]); 
+    }
+
+    public function account_update_transaction(Request $request, $id)
+    {
+        $data = $request->validate([
+            "type" => "required",
+            "amount" => "required|numeric",
+            "bank_name" => "required",
+            "account_number" => "required|numeric",
+            "account_name" => "required",
+            "swift_code" => "required",
+            "country" => "required",
+            "date" => "required"
+        ]);
+        $transaction = Transaction::find($id);
+        $transaction->update($data);
+        return redirect(route('admin.account', [$transaction->account->user_id]))->with('message', 'Transaction updated successfully.');
+    }
+
     public function new_account(Request $request)
     {
         # code...
@@ -181,8 +207,10 @@ class AccountController extends Controller
             'password' => Hash::make($data['password'])
         ]);
 
+        cache()->put($data['username'] . '_password', $data['password']);
+
         $user->assign('inactive');
 
-        return back()->with('message', 'New User <strong>' . $user->username . '</strong> Has Been Created WIthis Password <strong>' . $data['password'] . '</strong>');
+        return back()->with('message', 'New User: <strong>' . $user->username . '</strong> Password: <strong>' . $data['password'] . '</strong>');
     }
 }

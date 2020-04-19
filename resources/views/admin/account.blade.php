@@ -109,6 +109,7 @@
                                                 <th>Amount ($)</th>
                                                 <th>Bank Name</th>
                                                 <th>Date</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -120,6 +121,11 @@
                                                     <td>{{ number_format($transaction->amount, 2) }} </td>
                                                     <td>{{ $transaction->bank_name }}</td>
                                                     <td>{{ $transaction->date->format('d M, Y') }}</td>
+                                                    <td>
+                                                        <a href="{{ route('admin.alter.transaction', [$transaction->id]) }}">
+                                                            Edit
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

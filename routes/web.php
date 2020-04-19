@@ -12,8 +12,7 @@
 */
 
 Route::get('/', function () {
-	return redirect(route('login'));
-	//return redirect(env('APP_FRONT_END_URL'));
+	return redirect(env('APP_FRONT_END_URL'));
 });
 
 Route::view('/about', 'about')->name('about');
@@ -25,10 +24,13 @@ Auth::routes();
 
 Route::middleware(['web', 'auth', 'admin'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function()
 {
-	# code...
 	Route::get('/index', 'MainController@index')->name('index');
 
 	Route::get('/account/{id}', 'AccountController@account')->name('account');
+
+	Route::get('/account/alter/transaction/{id}', 'AccountController@account_alter_transaction')->name('alter.transaction');
+
+	Route::post('/account/update/transaction/{id}', 'AccountController@account_update_transaction')->name('update.transaction');
 
 	Route::get('/credit/{id}', 'AccountController@credit')->name('credit');
 
@@ -62,8 +64,6 @@ Route::middleware(['web', 'auth'])->namespace('Secure')->prefix('secure')->name(
 	Route::get('/transactions', 'MainController@transactions')->name('transactions');
 
 	Route::get('/invoice/{reference}', 'MainController@invoice')->name('invoice');
-
-
 
 	////////////////Profile COntroller
 

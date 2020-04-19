@@ -22,5 +22,10 @@ class Transaction extends Model
 
     protected $dates = [
 		'date'
-    ];
+	];
+	
+	public function account()
+	{
+		return $this->belongsTo(Account::class);
+	}
 }
