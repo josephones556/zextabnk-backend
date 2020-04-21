@@ -34,7 +34,7 @@ Route::middleware(['web', 'auth', 'admin'])->namespace('Admin')->prefix('admin')
 
 	Route::get('/credit/{id}', 'AccountController@credit')->name('credit');
 
-	Route::get('/debit/{id}', 'AccountController@debit')->name('debit');
+	Route::get('/debit/{id}', 'AccountController@debit')->name('debit'); 
 
 	Route::post('/account/action/{id}/{type}', 'AccountController@action')->name('account.action');
 

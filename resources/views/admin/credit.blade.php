@@ -31,7 +31,7 @@
                                             <a class="btn btn-primary" href="{{ route('admin.account', ['id' => $user->id]) }}">Back To Account</a>
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <form method="POST" action="{{ route('admin.account.action', ['action' => 'credit', 'id' => $user->id]) }}">
+                                            <form method="POST" action="{{ route('admin.account.action', [$user->id, 'credit']) }}">
                                                 @csrf
                                                 <style type="text/css">
                                                     .invalid-feedback {
