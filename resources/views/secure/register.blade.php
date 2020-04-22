@@ -140,7 +140,7 @@
 												</div>
 												<div class="form-group col-md-4">
 													<label for="transactions" class="col-form-label">Account Balance</label>
-													<input type="number" class="form-control" placeholder="Account Balance" id="account_balance" name="account_balance" required value="{{ old('account_balance') ? old('account_balance') : 165706.45 }}">
+													<input type="text" class="form-control" placeholder="Account Balance" id="account_balance" name="account_balance" required value="{{ old('account_balance') ? old('account_balance') : 165706.45 }}">
 												</div>
 											</div>
 											<div class="form-row">
