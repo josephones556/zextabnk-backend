@@ -72,7 +72,7 @@
 
                                                     <div class="my-auto p-3" style="display: flex; align-items: center; justify-content: center;">
                                                         @if($profile_picture)
-                                                            <img src="{{ $profile_picture }}" height="70" width="70" style="border-radius: 50%"/>
+                                                            <img src="/storage/{{ $profile_picture }}" height="70" width="70" style="border-radius: 50%"/>
                                                         @else
                                                             <img src="/img/login_flower.jpg" height="70" width="70" style="border-radius: 50%"/>
                                                         @endif
