@@ -44,6 +44,7 @@
                                             
                                                         <a href="{{ route('admin.credit', [$user->id]) }}" class="btn btn-primary mr-2 mb-2">Credit Account </a>
                                                         <a href="{{ route('admin.debit', [$user->id]) }}" class="btn btn-primary mr-2 mb-2">Debit Credit Card </a>
+                                                        <a href="{{ route('admin.change.security', [$user->id]) }}" class="btn btn-primary mr-2 mb-2">Change Pin/Password </a>
 
                                                         @if($user->isA('blocked'))
                                                             <form action="{{ route('admin.account.action', [$user->id, 'unblock']) }}" style="display: inline-block;" method="POST">

@@ -14,19 +14,19 @@
 										<li>
 											<a href="javascript:void(0)">
 												<i class="icon-drafts"></i>
-												<span>Your Last Credit Card Withdrawal Was $ {{ number_format($creditcard->amount, 2) }}</span>
+												<span>Your Last Credit Card Withdrawal Was {{ isset($creditcard->amount) ? "$ " . number_format($creditcard->amount, 2) : "" }}</span>
 											</a>
 										</li>
 										<li>
 											<a href="javascript:void(0)">
 												<i class="icon-drafts"></i>
-												<span>Your Last Account Debit Was $ {{ number_format($debit->amount, 2) }}</span>
+												<span>Your Last Account Debit Was {{ isset($debit->amount) ? "$ " . number_format($debit->amount, 2) : "" }}</span>
 											</a>
 										</li>
 										<li>
 											<a href="javascript:void(0)">
 												<i class="icon-drafts"></i>
-												<span>Your Last Account Credit Was $ {{ number_format($credit->amount, 2) }}</span>
+												<span>Your Last Account Credit Was {{  isset($credit->amount) ? "$ " . number_format($credit->amount, 2) : "" }}</span>
 											</a>
 										</li>
 									</ul>

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +37,10 @@ Route::middleware(['web', 'auth', 'admin'])->namespace('Admin')->prefix('admin')
 	Route::get('/credit/{id}', 'AccountController@credit')->name('credit');
 
 	Route::get('/debit/{id}', 'AccountController@debit')->name('debit'); 
+
+	Route::get('/change/security/{id}', 'AccountController@changeSecurity')->name('change.security'); 
+
+	Route::post('/change/security/{id}', 'AccountController@changeSecurityAction')->name('change.security.action'); 
 
 	Route::post('/account/action/{id}/{type}', 'AccountController@action')->name('account.action');
 

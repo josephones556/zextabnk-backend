@@ -158,6 +158,49 @@ class AccountController extends Controller
         return back();
     }
 
+    public function changeSecurity(Request $request, $id)
+    {
+        $user = User::with('account')->find($id);
+
+        return view('admin.change_security', ["user" => $user]);
+    }
+
+    public function changeSecurityAction(Request $request, $id)
+    {
+        $request->validate([
+            "used_id" => "required|numeric",
+            "security_type" => "required|string",
+        ]);
+
+        $user = User::with('account')->find($id);
+
+        switch($request->security_type) {
+            case "password";
+                $request->validate([
+                    "new_security" => "required|string",
+                ]);
+
+                $new_securify = Hash::make($request->new_security);
+
+                $user->update([
+                    "password" => $new_securify
+                ]);
+            break;
+
+            case "pin";
+                $request->validate([
+                    "new_security" => "required|numeric|digits_between:4,6|confirmed",
+                ]);
+
+                $user->update([
+                    "transfer_authorization_code" => $request->new_security
+                ]);
+            break;
+        }
+        
+        return back()->with("success", "User security has been updated.");
+    }
+
     public function account(Request $request, $id)
     {
         # code...;

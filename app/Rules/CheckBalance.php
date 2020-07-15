@@ -26,8 +26,7 @@ class CheckBalance implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
-        return auth()->user()->account->balance > $value;
+        return auth()->user()->account->balance > $value && $value >= 0;
     }
 
     /**
