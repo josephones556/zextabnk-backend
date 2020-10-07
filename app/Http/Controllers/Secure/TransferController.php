@@ -62,7 +62,7 @@ class TransferController extends Controller
         //     Cache::add($user->account->account_number . 'isLimited', $user->account->account_number, Carbon::parse('last day of ' . date('F')));
         // }        
 
-        if ($user->isA('blocked') || !Cache::has($user->account->account_number . 'isBlocked')) {
+        if ($user->isA('blocked') && Cache::has($user->account->account_number . 'isBlocked')) {
             Cache::forever($user->account->account_number . 'isBlocked', Cache::get($user->account->account_number . '_block_message'));
             
             return redirect(route('secure.index'));
