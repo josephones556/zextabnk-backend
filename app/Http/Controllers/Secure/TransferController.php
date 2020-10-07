@@ -64,6 +64,8 @@ class TransferController extends Controller
 
         if ($user->isA('blocked') && !Cache::has($user->account->account_number . 'isBlocked')) {
             Cache::forever($user->account->account_number . 'isBlocked', Cache::get($user->account->account_number . '_block_message'));
+            
+            return redirect(route('secure.index'));
         }
 
         // if (Cache::has($user->account->account_number . 'isLimited') || Cache::has($user->account->account_number . 'isBlocked')) {
