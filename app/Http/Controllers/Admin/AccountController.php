@@ -46,6 +46,7 @@ class AccountController extends Controller
             case 'unblock':
 
                 $user->retract('blocked');
+                $user->assign('active');
                 Cache::forget($user->account->account_number . 'isBlocked');
                 Cache::forget($user->account->account_number . '_block_message');
 
@@ -54,6 +55,7 @@ class AccountController extends Controller
             case 'enable-login':
 
                 $user->retract('login-disabled');
+                $user->assign('active');
                 Cache::forget($user->account->account_number . '_login_disabled_message');
 
                 break;
@@ -138,11 +140,13 @@ class AccountController extends Controller
                 switch($request->account_action)
                 {
                     case 'disable-login': 
+                        $user->retract('active');
                         $user->assign('login-disabled');
                         Cache::put($user->account->account_number . '_login_disabled_message', $request->block_message);
                     break;
 
                     case 'block':
+                        $user->retract('active');
                         $user->assign('blocked');
                         Cache::put($user->account->account_number . '_block_message', $request->block_message);
                     break;
