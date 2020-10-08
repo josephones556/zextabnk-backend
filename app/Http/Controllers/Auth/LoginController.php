@@ -118,7 +118,7 @@ class LoginController extends Controller
             $route = route('secure.register');
         }
 
-        if ($user->isAn('active')) {
+        if ($user->isAn('active') || $user->isAn('blocked')) {
             # code...
             $route = route('secure.index');
         }
