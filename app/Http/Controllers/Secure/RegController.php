@@ -39,7 +39,9 @@ class RegController extends Controller
             'country' => 'required|string',   
             'email' => 'required|string',
             'phone_number' => 'required|string',   
-            'opening' => 'required|string',
+            //'opening' => 'required|string',
+            'transaction_start' => 'required',
+            'transaction_stop' => 'required',
             'transactions' => 'required|string',   
             'transfer_authorization_code' => 'required|numeric',
             'account_balance' => 'required|numeric',
@@ -63,15 +65,20 @@ class RegController extends Controller
             do {
                 $number .= mt_rand(0, 9);
             } while(++$i < 12);
+        
+            $transaction_start = explode("-", $request->transaction_start);
+            $transaction_stop = explode("-", $request->transaction_stop);
+
+            now()->subYears($transaction_stop[0] - $transaction_start[0]);
 
             $data['picture'] = $filePath;
             $data['account_number'] = $number;
-            $data['opening'] = now()->subYears($data['opening']);
+             $data['opening'] = now()->subYears($transaction_stop[0] - $transaction_start[0]);
             $data['balance'] = $data['account_balance'];
             
 
             $account = $request->user()->account()->create($data);
-            $account->generateTransactions($data['transactions'], $request->opening);
+            $account->generateTransactions($data['transactions'], $transaction_start, $transaction_stop);
             $account->generateCard($data['country']);
             $request->user()->assign('active');
             $request->user()->retract('inactive');
