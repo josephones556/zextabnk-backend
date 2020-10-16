@@ -61,7 +61,7 @@ class Account extends Model
         return $this->hasMany(CardActivity::class, 'account_id');
     } 
 
-    public function generateTransactions($transactionCount, $opening)
+    public function generateTransactions($transactionCount, $transaction_start, $transaction_stop)
     {
         # code...
 
@@ -85,6 +85,11 @@ class Account extends Model
                 $email = $faker->randomElement([$faker->email, $faker->freeEmail, $faker->companyEmail]);
                 
             }
+            
+            $year = rand($transaction_start[0], $transaction_stop[0]);
+            $month = rand($transaction_start[1], $transaction_stop[1]);
+            $day = rand($transaction_start[2], $transaction_stop[2]);
+            $transaction_date = Carbon::create($year, $month, $day);
 
             $transaction = [
                 //
@@ -95,7 +100,7 @@ class Account extends Model
                 'account_number' => $account_num,
                 'account_name' => $faker->randomElement([$faker->name, $faker->bs, $faker->company]),
                 'swift_code' => $faker->swiftBicNumber,
-                'date' => $faker->dateTimeBetween($startDate = $startDate = '-' . $opening . ' years', $endDate = 'now', $timezone = null),
+                'date' => $transaction_date,
 
                 'email' => $email,
                 'country' => $faker->country,
