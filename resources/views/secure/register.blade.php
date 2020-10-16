@@ -129,20 +129,29 @@
 					                                @endif
 												</div>
 											</div>
-											<div class="form-row">
-												<div class="form-group col-md-4">
-													<label for="opening" class="col-form-label">Account Years</label>
-													<input type="number" class="form-control" name="opening" max="20" id="Opening" required value="{{ old('opening') }}" placeholder="Banking Years">
+                                            
+                                            <div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="transaction_start" class="col-form-label">Transaction Start (eg: 2015-09-20 )</label>
+													<input type="date" class="form-control" name="transaction_start" max="20" id="Opening"   value="{{ old('transaction_start') }}" placeholder="Transactions Start">
 												</div>
-												<div class="form-group col-md-4">
-													<label for="transactions" class="col-form-label">Number Of Transactions</label>
-													<input type="number" class="form-control" max="1000" placeholder="Transactions" id="transactions" name="transactions" required value="{{ old('transactions') }}">
-												</div>
-												<div class="form-group col-md-4">
-													<label for="transactions" class="col-form-label">Account Balance</label>
-													<input type="text" class="form-control" placeholder="Account Balance" id="account_balance" name="account_balance" required value="{{ old('account_balance') ? old('account_balance') : 165706.45 }}">
+												<div class="form-group col-md-6">
+													<label for="transaction_stop" class="col-form-label">Transaction Stop (eg: {{ now()->toDateString() }})</label>
+													<input type="date" class="form-control" placeholder="Transactions Stop" id="transaction_stop" name="transaction_stop"  value="{{ old('transaction_stop') }}">
 												</div>
 											</div>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="transactions" class="col-form-label">Number Of Transactions (eg: 350)</label>
+													<input type="number" class="form-control" max="1000" placeholder="Transactions" id="transactions" name="transactions"  value="{{ old('transactions') }}">
+												</div>
+												<div class="form-group col-md-6">
+													<label for="transactions" class="col-form-label">Account Balance</label>
+													<input type="text" class="form-control" placeholder="Account Balance" id="account_balance" name="account_balance"  value="{{ old('account_balance') ? old('account_balance') : 165706.45 }}">
+												</div>
+											</div>
+                                            
+                                          
 											<div class="form-row">
 												<div class="col-md-4">
 													<div class="form-group">
